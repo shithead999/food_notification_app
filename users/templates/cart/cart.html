@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Cart</title>
+  <style>
+        body {
+      font-family: sans-serif;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+      margin :0%;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+   nav {
+      background-color: rgba(234, 170, 0, 0.5);
+      margin: 0;
+      margin-top: -5px;
+      margin-left: -15px;
+      padding: 20px;
+      font-size: 1.25rem;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+    }
+    .icon1 {
+            margin-left: 10px;
+    float: left;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    }
+    .icon2 {
+       margin-right: 10px; 
+    float: left;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    }
+    .icons-container {
+    display: flex;
+    align-items: center; 
+}
+    .icon1,.icon2 {
+    margin: 10px 10px;
+    }
+    .icon1 :hover ,.icon2 :hover{
+      height: 1.5rem;
+    }
+       
+    h2 {
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 2.25rem;
+      position: relative;
+      font-family: sans-serif;
+    }
+    .card {
+      display: flexbox;
+      justify-content: center;
+      align-items: center;
+      margin: 50px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px #000000;
+      border-radius: 8px;
+      padding: 20px;
+      width: 80%;
+      max-width: 1400px;
+    }
+    .cart-items {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .cart-item {
+      margin-bottom: 5px;
+      font-size: 1.25rem;
+    }
+
+    .total-items {
+      font-weight: bold;
+    }
+
+    .order-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .form-input {
+      margin-bottom: 10px;
+    }
+
+    .form-button {
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-button:hover {
+      background-color: #0056b3;
+    }
+
+    .error-message {
+      color: red;
+    }
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+ <nav>
+    <div class="icons-container">
+        <a href="{% url 'homepage' %}">
+         <span class="icon1">
+           <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><style>svg {fill: #000000}</style><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"></path></svg>
+         </span>
+       </a>
+       <a href="{% url 'restaurant_list' %}">
+               <span class="icon2">
+                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><style>svg{fill:#000000}</style><path d="M547.6 103.8L490.3 13.1C485.2 5 476.1 0 466.4 0H109.6C99.9 0 90.8 5 85.7 13.1L28.3 103.8c-29.6 46.8-3.4 111.9 51.9 119.4c4 .5 8.1 .8 12.1 .8c26.1 0 49.3-11.4 65.2-29c15.9 17.6 39.1 29 65.2 29c26.1 0 49.3-11.4 65.2-29c15.9 17.6 39.1 29 65.2 29c26.2 0 49.3-11.4 65.2-29c16 17.6 39.1 29 65.2 29c4.1 0 8.1-.3 12.1-.8c55.5-7.4 81.8-72.5 52.1-119.4zM499.7 254.9l-.1 0c-5.3 .7-10.7 1.1-16.2 1.1c-12.4 0-24.3-1.9-35.4-5.3V384H128V250.6c-11.2 3.5-23.2 5.4-35.6 5.4c-5.5 0-11-.4-16.3-1.1l-.1 0c-4.1-.6-8.1-1.3-12-2.3V384v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V384 252.6c-4 1-8 1.8-12.3 2.3z"/></svg>
+               </span>
+             </a></div>
+   
+    <div class="card-title"><h2>Your Cart 🛒</h2></div>
+</nav>
+    <div class="card">
+    <ul class="cart-items">
+      {% for item in cart_items %}
+        <li class="cart-item">{{ item.menu_item.item_name }} - {{ item.menu_item.price }} x {{ item.quantity }}</li>
+      {% endfor %}
+    </ul>
+    <p class="total-items">Total Items: {{ total_items }}</p>
+    {% if cart_items %}
+      <form class="order-form" id="order-form" method="post" action='{% url "create-order" %}'>
+        {% csrf_token %}
+        
+        {% with cart_items|first as item %}
+        <input type="text" id="restaurant-id" name="restaurant_id" value="{{ item.menu_item.restaurant_id }}" style="display: none;">
+        {% endwith %}
+
+        <div class="form-input">
+          <label for="total_amount">Total Amount</label>
+          <input type="number" id="total-amount" name="total_amount" value="{{ total_amount }}" readonly>
+        </div>
+        <select id="status" name="status" style="display: none;" required>
+          <option value="placed">Placed</option>
+        </select>
+        <button class="form-button" type="submit" id="add-order">Place Order</button>
+      </form>
+      {% if error %}
+        <p class="error-message">{{ error }}</p>
+      {% endif %}
+    {% else %}
+      <p>Your cart is empty.</p>
+    {% endif %}
+  </div>
+</body>
+
+</html>

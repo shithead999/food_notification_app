@@ -1,0 +1,44 @@
+[
+    {
+      "model": "users.restaurants",
+      "pk": 1,
+      "fields": {
+        "name": "ITZZ Coffee Time"
+      }
+    },
+    {
+        "model": "users.restaurants",
+        "pk": 2,
+        "fields": {
+          "name": "Lazeez"
+        }
+      },
+      {
+        "model": "users.restaurants",
+        "pk": 3,
+        "fields": {
+          "name": "Love over Coffee"
+        }
+      },
+      {
+        "model": "users.restaurants",
+        "pk": 4,
+        "fields": {
+          "name": "LazyMozo"
+        }
+      },
+      {
+        "model": "users.restaurants",
+        "pk": 5,
+        "fields": {
+          "name": "Burger Farm"
+        }
+      },
+      {
+        "model": "users.restaurants",
+        "pk": 6,
+        "fields": {
+          "name": "There For You"
+        }
+      }
+  ]

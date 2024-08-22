@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv-volume
+  labels:
+    type: local
+    app: redis
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi  
+  accessModes:
+    - ReadWriteOnce  
+  hostPath:
+    path: "/mnt/redis-data"  
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pv-claim
+  labels:
+    app: redis
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce  # Must match the access mode in the PV
+  resources:
+    requests:
+      storage: 1Gi  # Must match the requested storage capacity in the PV

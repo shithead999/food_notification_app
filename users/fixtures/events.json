@@ -1,0 +1,42 @@
+[
+    {
+      "model": "users.events",
+      "pk": 1,
+      "fields": {
+        "event_name": "Order Placed",
+        "description": "Order is successfully placed."
+      }
+    },
+    {
+        "model": "users.events",
+        "pk": 2,
+        "fields": {
+          "event_name": "Order Delivered",
+          "description": "Order is delivered"
+        }
+      },
+      {
+        "model": "users.events",
+        "pk": 3,
+        "fields": {
+          "event_name": "Order Cancelled",
+          "description": "order is cancelled"
+        }
+      },
+      {
+        "model": "users.events",
+        "pk": 4,
+        "fields": {
+          "event_name": "Payment Successful",
+          "description": "payment done for order"
+        }
+      },
+      {
+        "model": "users.events",
+        "pk": 5,
+        "fields": {
+          "event_name": "Payment Failed",
+          "description": "payment failed for the order"
+        }
+      }
+  ]

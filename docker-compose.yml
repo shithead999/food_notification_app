@@ -1,0 +1,38 @@
+version: '3.3'
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+  web:
+    build: .
+    restart: always
+    command: bash -c "python manage.py migrate && python manage.py loaddata events && python manage.py loaddata restaurants && python manage.py loaddata menus && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    links:
+      - db
+    depends_on:
+      - db
+  celery_worker:
+    build: .
+    command: celery -A food_notification worker --loglevel=info
+  
+    volumes:
+      - .:/code
+    links:
+      - db
+      - redis
+    depends_on:
+      - db
+      - redis

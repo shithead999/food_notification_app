@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: celery-worker
+  template:
+    metadata:
+      labels:
+        app: celery-worker
+    spec:
+      containers:
+        - name: celery-worker
+          image: food_notification-celery_worker # Use the same image as the Django app
+          imagePullPolicy: Never
+          command:
+            ["celery", "-A", "food_notification", "worker", "--loglevel=info"]
+      volumes: # Define volumes at the same level as containers
+        - name: shared-data
+          emptyDir: {}

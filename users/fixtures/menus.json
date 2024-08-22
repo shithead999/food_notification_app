@@ -1,0 +1,175 @@
+[
+    {
+        "model": "users.menu",
+        "pk": 1,
+        "fields": {
+            "restaurant": 1,
+            "item_name": "Burger",
+            "description": "Delicious beef burger with cheese and veggies.",
+            "price": "8.99"
+        }
+    },
+    {
+        "model": "users.menu",
+        "pk": 2,
+        "fields": {
+            "restaurant": 1,
+            "item_name": "Pizza",
+            "description": "Large pepperoni pizza with extra cheese.",
+            "price": "12.99"
+        }
+    },
+    {
+        "model": "users.menu",
+        "pk": 3,
+        "fields": {
+            "restaurant": 2,
+            "item_name": "Pasta",
+            "description": "Creamy Alfredo pasta with garlic bread.",
+            "price": "10.99"
+        }
+    },
+    {
+        "model": "users.menu",
+        "pk": 4,
+        "fields": {
+            "restaurant": 3,
+            "item_name": "Pasta",
+            "description": "Creamy Alfredo pasta with garlic bread.",
+            "price": "12.99"
+        }
+    },
+    {
+        "model": "users.menu",
+        "pk": 5,
+        "fields": {
+            "restaurant": 3,
+            "item_name": "Cheesy Garlic Bread",
+            "description": "Garlic bread loaded with cheese.",
+            "price": "6.99"
+        }
+    },
+    
+    {
+            "model": "users.menu",
+            "pk": 6,
+            "fields": {
+                "restaurant": 2,
+                "item_name": "Baked Vegetable",
+                "description": "The goodness of vegetables and baked cheese to lust your mouth.",
+                "price": "18.99"
+            }
+        },
+        {
+            "model": "users.menu",
+            "pk": 7,
+            "fields": {
+                "restaurant": 3,
+                "item_name": "Salad",
+                "description": "Fresh garden salad with assorted vegetables.",
+                "price": "6.99"
+            }
+        },
+        {
+            "model": "users.menu",
+            "pk": 8,
+            "fields": {
+                "restaurant": 3,
+                "item_name": "Sushi",
+                "description": "Assorted sushi rolls with soy sauce and wasabi.",
+                "price": "14.99"
+            }
+        },
+        {
+            "model": "users.menu",
+            "pk": 9,
+            "fields": {
+                "restaurant": 1,
+                "item_name": "Coffee Latte",
+                "description": "Smooth and creamy coffee latte.",
+                "price": "3.99"
+            }
+        },
+        {
+            "model": "users.menu",
+            "pk": 10,
+            "fields": {
+                "restaurant": 1,
+                "item_name": "Cappuccino",
+                "description": "Rich and frothy cappuccino with espresso.",
+                "price": "4.49"
+            }
+        },
+        {
+            "model": "users.menu",
+            "pk": 11,
+            "fields": {
+                "restaurant": 3,
+                "item_name": "Iced Coffee",
+                "description": "Refreshing iced coffee with a hint of sweetness.",
+                "price": "3.99"
+            }
+        },
+        {
+            "model": "users.menu",
+            "pk": 12,
+            "fields": {
+                "restaurant": 4,
+                "item_name": "Exotic Veg Salad",
+                "description": "A refreshing salad with a mix of exotic vegetables.",
+                "price": "6.99"
+            }
+        },
+        {
+            "model": "users.menu",
+            "pk": 13,
+            "fields": {
+                "restaurant": 4,
+                "item_name": "Veggie Wrap",
+                "description": "A flavorful wrap filled with assorted grilled vegetables.",
+                "price": "7.49"
+            }
+        },
+        {
+            "model": "users.menu",
+            "pk": 14,
+            "fields": {
+                "restaurant": 5,
+                "item_name": "Spicy Veggie Curry",
+                "description": "A spicy and aromatic curry with a medley of vegetables.",
+                "price": "9.99"
+            }
+        },
+        {
+            "model": "users.menu",
+            "pk": 15,
+            "fields": {
+                "restaurant": 5,
+                "item_name": "Veggie Stir-Fry",
+                "description": "Stir-fried vegetables with a tangy and savory sauce.",
+                "price": "8.49"
+            }
+        },
+        {
+            "model": "users.menu",
+            "pk": 16,
+            "fields": {
+                "restaurant": 6,
+                "item_name": "Mushroom Medley",
+                "description": "A medley of sautéed mushrooms with herbs and garlic.",
+                "price": "6.99"
+            }
+        },
+        {
+            "model": "users.menu",
+            "pk": 17,
+            "fields": {
+                "restaurant": 6,
+                "item_name": "Grilled Zucchini",
+                "description": "Sliced zucchini marinated and grilled to perfection.",
+                "price": "5.49"
+            }
+        }
+        
+    
+]

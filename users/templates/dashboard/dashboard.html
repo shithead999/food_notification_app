@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+</head>
+  <style>
+   
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family:sans-serif;
+  background-color: #fdc1c1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+.logout-box {
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+}
+    .img{
+      background-color: #fff;
+      max-width: 100%;
+    height: 90px;
+      width: 75px;
+    }
+
+#logout-button {
+  background-color: #ccc;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+#cancel-button {
+  background-color: #ccc;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+   #logout-button:hover , #cancel-button:hover {
+      background-color:#e74c3c;
+      font-size: 20px;
+    }
+    a{
+     text-decoration: none;
+      color: #fff;
+    }
+    h1{
+      font-weight: lighter;
+    }
+.footer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+}
+
+  </style>
+<body><div class="container">
+  <div class="logout-box">
+    <img class="img" src="https://w7.pngwing.com/pngs/241/344/png-transparent-door-enter-entrance-exit-leave-logout-out-basic-user-interface-icon-thumbnail.png">
+    <h1>Oh no! You're leaving...</h1>
+    <h1 class="two">Are you sure?</h1>
+    <button id="logout-button"><a href="{% url 'logout' %}">Logout</a></button>
+    <button id="cancel-button"><a href="{% url 'homepage' %}">Cancel</a></button>
+  </div>
+  </div>
+    <!-- <script>
+        const logoutButton = document.getElementById('logout-button');
+
+        logoutButton.addEventListener('click', async () => {
+            try {
+                const response = await fetch('/api/logout/', {
+                    method: 'POST',
+                });
+
+                if (response.ok) {
+                    window.location.href = '/login'; 
+                } else {
+                    console.error('Logout failed.');
+                }
+            } catch (error) {
+                console.error('An error occurred during logout.');
+            }
+        });
+    </script> -->
+</body>
+</html>

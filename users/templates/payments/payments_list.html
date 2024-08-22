@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payments List</title>
+
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+      header{
+        background-color: rgb(243 208 114);
+        margin: 0;
+        padding: 20px;
+        width: 100%;
+        text-align: center;
+        font-size: 1.25rem;
+      }
+      body{
+        margin: 0;
+      }
+      .icon {
+      
+      margin-left: auto;
+      float: left;
+      position: absolute;
+  top: 10px; 
+  left: 10px;
+      }
+      
+     .back{
+       background-image: url("https://cdn-icons-png.flaticon.com/256/8777/8777972.png");
+        background-repeat: no-repeat;
+        /* background-size: cover; */
+        background-position: center;
+     }
+      #payment_status, #payment_id, input[type="number"], input[type="text"], form{
+        margin-bottom: 20px;
+      }
+      input[type="number"], input[type="text"]{
+        border-radius: 5px;
+      }
+      input[type="number"]:hover, input[type="text"]:hover{
+        background-color: #F5F5DC;
+      }
+      #payment_status{
+        margin-left: 2px;
+      }
+      #submit{
+        border-radius: 5px;
+        cursor: pointer;
+         padding: 5px 10px ;
+      }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+      td:hover{
+        background-color: #ff535c;
+      }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+</head>
+<body>
+   <header id="color-changing-header"><h1>Payments List</h1>
+    <a href="{% url 'homepage'%}">
+        <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+          <style>
+            svg {
+              fill: #000000
+            }
+          </style>
+          <path
+            d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+        </svg>
+      </span>
+    </a>
+  
+</header> 
+<div class="back">
+    <h2>Update Payment Status</h2>
+  
+    <form id="update-payment-status-form" action="{% url 'update-payment-status' %}" method="post">
+        {% csrf_token %}
+        <label id="payment_id" for="payment_id">Payment ID:</label>
+        <input type="number" name="payment_id" required><br>
+        <label id="payment_status" for="payment_status">New Status:</label>
+        <input type="text" name="payment_status" required><br>
+        <button id="submit" type="submit">Update Status</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Payment ID</th>
+                <th>Order ID</th>
+                <th>Payment Amount</th>
+                <th>Created At</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="payment-table">
+            <!-- Payments will be dynamically added here by JavaScript -->
+            {% for payment in payments %}
+            <tr>
+                <td>{{ payment.payment_id }}</td>
+                <td>{{ payment.order_id }}</td>
+                <td>{{ payment.payment_amount }}</td>
+                <td>{{ payment.created_at }}</td>
+                <td>{{ payment.payment_status }}</td>
+        
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+ 
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Function to retrieve payments from the API
+            function getPayments() {
+                $.ajax({
+                    url: '/api/payments', // Replace with your API endpoint URL
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        var PaymentsTable = $('#payment-table');
+                        PaymentsTable.empty();
+
+                        data.forEach(function(payment) {
+                            var row = '<tr>';
+                            row += '<td>' + payment.payment_id + '</td>';
+                            row += '<td>' + payment.order_id + '</td>';
+                            row += '<td>' + payment.payment_amount + '</td>';
+                            row += '<td>' + payment.created_at + '</td>';
+                            row += '<td>' + payment.payment_status + '</td>';
+                            row += '</tr>';
+
+                            PaymentsTable.append(row);
+                        });
+                    },
+                    error: function() {
+                        console.error('Error fetching payments from the API.');
+                    }
+                });
+            }
+
+            $('#update-payment-status-form').submit(function(event) {
+                event.preventDefault();
+                var form = $(this);
+                var formData = form.serialize();
+
+                $.ajax({
+                    url: '/api/update-payment-status/', // Replace with your API endpoint URL
+                    method: 'POST',
+                    data: formData,
+                    success: function() {
+                        // Clear form fields after successful update
+                        form.trigger('reset');
+                        // Refresh the payments list
+                        getPayments();
+                    },
+                    error: function() {
+                        console.error('Error updating payment status.');
+                    }
+                });
+            });
+
+
+            // Call the function to retrieve payments on page load
+            getPayments();
+        }); -->
+    <!-- </script> -->
+ 
+</body>
+</html>

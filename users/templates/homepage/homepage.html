@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap" rel="stylesheet">
+
+  <title>Food Notification App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      background-image: url(https://cdn.inc42.com/wp-content/uploads/2019/07/food-delivery.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 100%;
+    }
+
+    nav {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(234, 170, 0, 0.5);
+      padding: 20px 0;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #6a4410;
+      font-weight: 800;
+      font-family: 'Tilt Prism', cursive;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #6a4410;
+      text-align: center;
+      margin: 0;
+    }
+
+    .navbar-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .navbar-list li {
+      margin: 10px 0;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    a:hover {
+      color: #e0e0e0;
+      text-decoration: underline;
+    }
+
+    .icon {
+      margin-bottom: 5px;
+      font-size: 1.5em;
+    }
+
+   .icon svg {
+      fill: #6a4410;
+    }
+
+    @media screen and (min-width: 768px) {
+      nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+      }
+
+      h1 {
+        font-size: 45px;
+      }
+      .notification-count {
+        background-color: crimson;
+        font-weight: bold;
+        color: white;
+        padding: 1px;
+        border-radius: 15%;
+        font-size: 0.8em;
+      }
+      p {
+        font-size: 20px;
+        margin: 0 20px;
+      }
+
+      .navbar-list {
+        flex-direction: row;
+        margin-top: 0;
+      }
+
+      .navbar-list li {
+        margin: 0 10px;
+      }
+      .container2{
+        display: flexbox;
+        margin-left: -65%;
+        margin-top: 1%;
+        border-color: #8c6f65;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px #8c6f65;
+    width: 80%;
+    max-width: 400px;
+     color: #8c6f65; }
+      }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div>
+        <h1>Welcome to the Food Notification App!</h1>
+        <p>Stay updated with real-time notifications about your orders and payments.</p>
+      </div>
+      <ul class="navbar-list">
+        <li><a href="{% url 'notification' %}">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                <path
+                  d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" />
+              </svg>
+
+              <span class="notification-count" id="notification-count-span">
+              {% if notification_count > 0 %}
+                {{ notification_count }}
+              {% endif %}
+              </span>
+            </span>
+            View Notification
+          </a></li>
+        <li><a href="{% url 'order-list' %}">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                <path
+                  d="M253.3 35.1c6.1-11.8 1.5-26.3-10.2-32.4s-26.3-1.5-32.4 10.2L117.6 192H32c-17.7 0-32 14.3-32 32s14.3 32 32 32L83.9 463.5C91 492 116.6 512 146 512H430c29.4 0 55-20 62.1-48.5L544 256c17.7 0 32-14.3 32-32s-14.3-32-32-32H458.4L365.3 12.9C359.2 1.2 344.7-3.4 332.9 2.7s-16.3 20.6-10.2 32.4L404.3 192H171.7L253.3 35.1zM192 304v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16s16 7.2 16 16zm96-16c8.8 0 16 7.2 16 16v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16zm128 16v96c0 8.8-7.2 16-16 16s-16-7.2-16-16V304c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
+              </svg>
+            </span>
+            View Orders
+          </a></li>
+                <li><a href="{% url 'restaurant_list' %}">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 576 512"><style>svg{fill:#000000}</style><path d="M547.6 103.8L490.3 13.1C485.2 5 476.1 0 466.4 0H109.6C99.9 0 90.8 5 85.7 13.1L28.3 103.8c-29.6 46.8-3.4 111.9 51.9 119.4c4 .5 8.1 .8 12.1 .8c26.1 0 49.3-11.4 65.2-29c15.9 17.6 39.1 29 65.2 29c26.1 0 49.3-11.4 65.2-29c15.9 17.6 39.1 29 65.2 29c26.2 0 49.3-11.4 65.2-29c16 17.6 39.1 29 65.2 29c4.1 0 8.1-.3 12.1-.8c55.5-7.4 81.8-72.5 52.1-119.4zM499.7 254.9l-.1 0c-5.3 .7-10.7 1.1-16.2 1.1c-12.4 0-24.3-1.9-35.4-5.3V384H128V250.6c-11.2 3.5-23.2 5.4-35.6 5.4c-5.5 0-11-.4-16.3-1.1l-.1 0c-4.1-.6-8.1-1.3-12-2.3V384v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V384 252.6c-4 1-8 1.8-12.3 2.3z"/></svg>
+            </span>
+            Restaurants
+          </a></li>
+         <li><a href="{% url 'cart' %}">
+            <span class="icon">
+             <svg xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 576 512"><style>svg{fill:#00040a}</style><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+            </span>
+            View Cart
+          </a></li>
+       
+          <li><a href="{% url 'dashboard' %}">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><style>svg{fill:#6a4410}</style><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg></span>Log Out</li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container2">
+    <h3>CURRENT USER: </h3>
+    <ul class="cuser">
+        <li><b>Username:</b> {{ User.username }}</li>
+        <li><b>Email:</b> {{ User.email }}</li>
+        <li><b>Phone Number:</b> {{ User.phone_number }}</li>
+        <li><b>Joined At: </b> {{ User.date_joined }}</li>
+        
+    </ul>
+  </div>
+
+
+  <script>
+    const socket = new WebSocket('ws://' + window.location.host + '/ws/notification/');
+    const notification_count_span = document.getElementById("notification-count-span")
+    socket.onopen = function(e) {   
+        console.log('WebSocket connection established.');
+    };
+    socket.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        console.log(data)
+        if (Array.isArray(data)) {
+          
+          let prev = notification_count_span.innerText ? parseInt(notification_count_span.innerText) : 0
+          notification_count_span.innerText = prev + 1
+        }
+        else {
+          if (data.message == "read_notification") {
+            notification_count_span.innerText = null
+          }
+        }
+    };
+</script>
+
+</body>
+
+</html>
